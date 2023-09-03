@@ -56,7 +56,7 @@ resource "digitalocean_volume_attachment" "openttd-data" {
 
 resource "cloudflare_record" "openttd" {
   zone_id = var.cf_zone
-  name    = "openttd.5hm.net"
+  name    = var.cf_host
   value   = digitalocean_droplet.openttd.ipv4_address
   type    = "A"
   ttl     = 60
