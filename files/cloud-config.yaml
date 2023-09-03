@@ -573,7 +573,7 @@ write_files:
     
     [network]
     client_name = Server Console
-    server_name = openttd.5hm.net public server
+    server_name = openttd.wire48.net public server
     connect_to_ip = 
     last_joined = 
     
