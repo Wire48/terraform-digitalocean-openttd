@@ -62,3 +62,11 @@ resource "cloudflare_record" "openttd" {
   ttl     = 60
   proxied = false
 }
+
+resource "digitalocean_project" "openttd" {
+  name        = "openttd"
+  description = "OpenTTD Dedicated Server at openttd.wire48.net"
+  purpose     = "Web Application"
+  environment = "Development"
+  resources   = [digitalocean_droplet.openttd.urn, digitalocean_volume.data.urn]
+}
