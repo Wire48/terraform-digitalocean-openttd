@@ -21,9 +21,9 @@ provider "digitalocean" {
   token = var.do_token
 }
 
-resource "digitalocean_ssh_key" "yubikey" {
-  name       = "Yubikey"
-  public_key = file("/home/jpw/.ssh/id_yubikey_464.pub")
+resource "digitalocean_ssh_key" "ssh" {
+  name       = var.ssh_key_name
+  public_key = var.ssh_key_location
 }
 
 resource "digitalocean_vpc" "openttdnet" {
@@ -44,7 +44,7 @@ resource "digitalocean_droplet" "openttd" {
   name      = "openttd"
   region    = "lon1"
   size      = "s-1vcpu-1gb"
-  ssh_keys  = [digitalocean_ssh_key.yubikey.fingerprint]
+  ssh_keys  = [digitalocean_ssh_key.ssh.fingerprint]
   user_data = templatefile("${path.module}/files/cloud-config.yaml",{
     SERVER_PASSWORD = var.server_password
     RCON_PASSWORD = var.rcon_password

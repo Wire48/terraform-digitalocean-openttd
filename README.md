@@ -31,14 +31,16 @@ digital ocean droplets
 
 ## Variables
 
-| Name            | Description                   | Default |
-|-----------------|-------------------------------|---------|
-| do_token        | Api token for digital ocean   | none    |
-| cf_token        | Api token for cloudflare      | none    |
-| cf_zone         | Zone to register server in    | none    |
-| cf_host         | Hostname to create in zone    | openttd |
-| server_password | Password to access the server | none    |
-| rcon_password   | Password to admin the server  | none    |
+| Name             | Description                                | Default           |
+|------------------|--------------------------------------------|-------------------|
+| do_token         | Api token for digital ocean                | none              |
+| cf_token         | Api token for cloudflare                   | none              |
+| cf_zone          | Zone to register server in                 | none              |
+| cf_host          | Hostname to create in zone                 | openttd           |
+| server_password  | Password to access the server              | none              |
+| rcon_password    | Password to admin the server               | none              |
+| ssh_key_name     | Name of SSH key to create in DO            | openttd-ssh-key   |
+| ssh_key_location | Location of public ssh key to upload to DO | ~/.ssh/id_rsa.pub |
 
 ## Outputs
 

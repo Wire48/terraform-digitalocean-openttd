@@ -30,3 +30,15 @@ variable "rcon_password" {
   default     = ""
   description = "Server Rcon Password"
 }
+
+variable "ssh_key_location" {
+  type        = string
+  default     = "~/.ssh/id_rsa.pub"
+  description = "Path to public ssh key used to access the server"
+}
+
+variable "ssh_key_name" {
+  type        = string
+  default     = "openttd-ssh-key"
+  description = "Name of SSH key to create in digitalocean"
+}
