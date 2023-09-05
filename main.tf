@@ -45,7 +45,10 @@ resource "digitalocean_droplet" "openttd" {
   region    = "lon1"
   size      = "s-1vcpu-1gb"
   ssh_keys  = [digitalocean_ssh_key.yubikey.fingerprint]
-  user_data = file("${path.module}/files/cloud-config.yaml")
+  user_data = templatefile("${path.module}/files/cloud-config.yaml",{
+    SERVER_PASSWORD = var.server_password
+    RCON_PASSWORD = var.rcon_password
+  })
   vpc_uuid  = digitalocean_vpc.openttdnet.id
 }
 

@@ -18,3 +18,15 @@ variable "cf_host" {
   default     = "openttd"
   description = "Host within cloudflare zone"
 }
+
+variable "server_password" {
+  type        = string
+  default     = ""
+  description = "Server Password"
+}
+
+variable "rcon_password" {
+  type        = string
+  default     = ""
+  description = "Server Rcon Password"
+}

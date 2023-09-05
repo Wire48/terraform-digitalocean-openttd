@@ -31,21 +31,21 @@ write_files:
 
     mkdir -p /opt/openttd
     TMPDIR=$(mktemp -d)
-    curl -Lso "${TMPDIR}/openttd.tar.gz" https://cdn.openttd.org/openttd-releases/13.4/openttd-13.4-linux-generic-amd64.tar.xz
-    tar -C /opt/openttd --strip-components=1 -xf "${TMPDIR}/openttd.tar.gz"
+    curl -Lso "$${TMPDIR}/openttd.tar.gz" https://cdn.openttd.org/openttd-releases/13.4/openttd-13.4-linux-generic-amd64.tar.xz
+    tar -C /opt/openttd --strip-components=1 -xf "$${TMPDIR}/openttd.tar.gz"
     cd /opt/openttd/baseset
     curl -OL https://cdn.openttd.org/opengfx-releases/7.1/opengfx-7.1-all.zip
     unzip opengfx-7.1-all.zip
     tar xf tar -xf opengfx-7.1.tar
-    rm -rf "$TEMPDIR"
+    rm -rf "$${TEMPDIR}"
 - path: /usr/local/bin/openttd-init.sh
   owner: root:root
   permissions: '0755'
   content: |
     #!/bin/bash
     LASTAUTOSAVE="$(ls -rt /data/save/autosave | tail -n1)"
-    if [ -f "/data/save/autosave/${LASTAUTOSAVE}" ]; then
-        /opt/openttd/openttd -D -g /data/save/autosave/${LASTAUTOSAVE}
+    if [ -f "/data/save/autosave/$${LASTAUTOSAVE}" ]; then
+        /opt/openttd/openttd -D -g "/data/save/autosave/$${LASTAUTOSAVE}"
     else
         /opt/openttd/openttd -D
     fi
@@ -597,8 +597,8 @@ write_files:
     [secrets]
     
     [network]
-    server_password =
-    rcon_password =
+    server_password = ${SERVER_PASSWORD}
+    rcon_password = ${RCON_PASSWORD}
     admin_password =
     default_company_pass =
     network_id =
