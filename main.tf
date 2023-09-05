@@ -40,16 +40,16 @@ resource "digitalocean_volume" "data" {
 }
 
 resource "digitalocean_droplet" "openttd" {
-  image     = "debian-12-x64"
-  name      = "openttd"
-  region    = "lon1"
-  size      = "s-1vcpu-1gb"
-  ssh_keys  = [digitalocean_ssh_key.ssh.fingerprint]
-  user_data = templatefile("${path.module}/files/cloud-config.yaml",{
+  image    = "debian-12-x64"
+  name     = "openttd"
+  region   = "lon1"
+  size     = "s-1vcpu-1gb"
+  ssh_keys = [digitalocean_ssh_key.ssh.fingerprint]
+  user_data = templatefile("${path.module}/files/cloud-config.yaml", {
     SERVER_PASSWORD = var.server_password
-    RCON_PASSWORD = var.rcon_password
+    RCON_PASSWORD   = var.rcon_password
   })
-  vpc_uuid  = digitalocean_vpc.openttdnet.id
+  vpc_uuid = digitalocean_vpc.openttdnet.id
 }
 
 resource "digitalocean_volume_attachment" "openttd-data" {
