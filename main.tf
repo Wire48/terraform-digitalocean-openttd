@@ -23,7 +23,7 @@ provider "digitalocean" {
 
 resource "digitalocean_ssh_key" "ssh" {
   name       = var.ssh_key_name
-  public_key = var.ssh_key_location
+  public_key = file(var.ssh_key_location)
 }
 
 resource "digitalocean_vpc" "openttdnet" {
