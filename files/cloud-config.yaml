@@ -491,8 +491,8 @@ write_files:
     tree_placer = 2
     heightmap_rotation = 0
     se_flat_world_height = 1
-    map_x = 7
-    map_y = 7
+    map_x = 8
+    map_y = 8
     water_borders = 15
     custom_town_number = 1
     custom_industry_number = 1
